@@ -19,7 +19,7 @@ headers = {
 }
 
 BASE_URL = "https://www.wsj.com/news/archive"
-OUTPUT_FILE = "wsj_articles.csv"
+OUTPUT_FILE = "wsj_headlines.csv"
 
 def fetch_data(date, page=1):
     """Fetch data for a specific date and page number."""
@@ -86,10 +86,11 @@ def save_to_csv(articles, filename):
 
 
 def main():
-    start_date = datetime(2023, 1, 1)
-    end_date = datetime(2023, 1, 4)  
+    start_date = datetime(2000, 1, 1)
+    end_date = datetime(2024, 1, 1)  
     current_date = start_date
     while current_date <= end_date:
+        print("Scraping " + current_date.strftime('%Y-%m-%d'))
         page = 1
         while True:
             html = fetch_data(current_date, page)
